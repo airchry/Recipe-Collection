@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <title>Surgeon of Death</title>
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1>What recipe do you want? ✌️</h1>
+        <form class="form" id="form" action="/list" method="post">
+            <select name="recipe" onchange="this.form.submit()">
+                <% const alphabet = "abcdefghijklmnopqrstuvwxyz" %>
+                <% for (let i = 0; i < alphabet.length; i++) { %>
+                    <option value="<%= alphabet[i] %>"><%= alphabet[i] %></option>
+                <% } %>
+            </select>
+            <select name="meal">
+            <% if (list && list.meals) { %>
+                <% for (let i = 0; i < list.meals.length; i++) { %>
+                    <option value=<%= list.meals[i].strMeal %>><%= list.meals[i].strMeal %></option>
+                <% } %>
+            <% } %>
+            </select>
+            <button type="button" onclick="window.location.href='/reset'">Reset</button>
+        </form>
+        
+        <div class="cards">
+
+            <% if (selected && selected.meals) { %>
+                <div class="card"><img src=<%= selected.meals[0].strMealThumb %> alt=<%= selected.meals[0].strMeal %> id="image"></div>
+            <% } %>
+            
+
+            <div class="first card" id="ingredientCard">
+                <% if (selected && selected.meals) { %>
+                    <h2>Ingredients:</h2>
+                    <ol>
+                        <% for (let i = 1; i <= 20; i++) { %>
+                            <% const ing = selected.meals[0][`strIngredient${i}`]; %>
+                            <% const measure = selected.meals[0][`strMeasure${i}`]; %>
+                            <% if (ing) { %>
+                                <li><%= measure %> of <%= ing %></li>
+                            <% } %>
+                        <% } %>
+                    </ol>
+                <% } else { %>
+                    <h2>No results.</h2>
+                <% } %>
+            </div>
+
+            <% if (selected && selected.meals) { %>
+                <div class="second card" id="instruction">
+                    <h2>Instruction: </h2>
+                    <% const ins = selected.meals[0].strInstructions; %>
+                    <% if (ins) { %>
+                        <p><%= ins %></p>
+                    <% } %>
+                </div>       
+            <% } %>
+        </div>
+
+    </div>
+    <script src="/scripts/main.js"></script>
+</body>
+</html>
