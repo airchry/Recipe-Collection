@@ -26,6 +26,8 @@ h2 {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
     display: flex;
     flex-direction: column;
@@ -60,6 +62,24 @@ select {
     min-height: 100px;
     margin-top: 5px;
     padding: 10px 10px;
+}
+
+.info-block {
+    display: block;
+    width: 100%;
+}
+
+.image-info {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.identity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .second {

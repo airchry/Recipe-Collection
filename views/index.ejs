@@ -32,7 +32,18 @@
         <div class="cards">
 
             <% if (selected && selected.meals) { %>
-                <div class="card"><img src=<%= selected.meals[0].strMealThumb %> alt=<%= selected.meals[0].strMeal %> id="image"></div>
+                <div class="card">
+                    <div class="info-block">
+                        <div class="identity">
+                            <div style="color: green; font-weight: bold;"><%= selected.meals[0].strCategory.toUpperCase() %></div>
+                            <div style="font-weight: bold; font-size: 20px; text-decoration: underline;"><%= selected.meals[0].strMeal.toUpperCase() %></div>
+                            <div style="color: green; font-weight: bold;"><%= selected.meals[0].strArea.toUpperCase() %></div>
+                        </div>
+                        <div class="image-info">
+                            <img src=<%= selected.meals[0].strMealThumb %> alt=<%= selected.meals[0].strMeal %> id="image">
+                        </div> 
+                    </div>
+                </div>
             <% } %>
             
 
