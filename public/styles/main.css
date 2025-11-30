@@ -36,12 +36,12 @@ h2 {
 .form {
     display: grid;
     width: 100%;
-    grid-template-columns: 30px 1fr 90px;
+    grid-template-columns: 30px 1fr 90px 90px;
     grid-column-gap: 10px;
 }
 
 select {
-    max-width: 470px;
+    max-width: 360px;
 }
 
 .cards {
